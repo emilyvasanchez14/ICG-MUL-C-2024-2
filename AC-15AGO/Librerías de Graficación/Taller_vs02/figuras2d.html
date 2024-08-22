@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dibujo de Figuras 2D</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Dibujo de Figuras 2D</h1>
+    <form id="shapeForm">
+        <label for="shape">Selecciona una figura:</label>
+        <select id="shape" name="shape" required>
+            <option value="">--Seleccione--</option>
+            <option value="circle">Círculo</option>
+            <option value="square">Cuadrado</option>
+            <option value="triangle">Triángulo</option>
+            <option value="polygon">Polígono</option>
+            <option value="line">Línea</option>
+            <option value="ellipse">Elipse</option>
+        </select>
+
+        <label for="coordinateType">Selecciona el tipo de coordenadas:</label>
+        <select id="coordinateType" name="coordinateType" required>
+            <option value="cartesian">Cartesiano</option>
+            <option value="polar">Polar</option>
+        </select>
+
+        <div id="parameters"></div>
+        
+        <button type="button" onclick="drawShape()">Dibujar</button>
+    </form>
+    
+    <canvas id="canvas" width="500" height="500"></canvas>
+
+    <script src="figuras2D.js"></script>
+</body>
+</html>
