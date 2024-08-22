@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trazo de Figuras 2D</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-size: 2em;
+            margin: 20px 0;
+        }
+        #canvasContainer {
+            margin: 20px auto;
+            position: relative;
+        }
+        canvas {
+            border: 1px solid black;
+        }
+        form {
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+            text-align: left;
+        }
+        label, input, select {
+            display: block;
+            margin: 5px 0;
+            width: 100%;
+        }
+        input[type="number"], input[type="color"] {
+            width: calc(100% - 22px);
+        }
+        input[type="color"] {
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Trazo de Figuras 2D</h1>
+    <p>Bienvenido a la herramienta para trazar figuras en coordenadas cartesianas o polares. Selecciona una figura, elige el tipo de coordenadas y proporciona los parámetros necesarios para ver el dibujo en el área de visualización.</p>
+    
+    <form id="shapeForm">
+        <label for="coordinateType">Tipo de Coordenadas:</label>
+        <select id="coordinateType" name="coordinateType">
+            <option value="cartesian">Cartesianas</option>
+            <option value="polar">Polares</option>
+        </select>
+        
+        <label for="shapeSelect">Selecciona la figura:</label>
+        <select id="shapeSelect" name="shapeSelect">
+            <option value="circle">Círculo</option>
+            <option value="square">Cuadrado</option>
+            <option value="triangle">Triángulo</option>
+            <option value="polygon">Polígono</option>
+            <option value="line">Línea</option>
+            <option value="ellipse">Elipse</option>
+        </select>
+        
+        <div id="parameters"></div>
+        
+        <button type="button" onclick="drawShape()">Dibujar</button>
+    </form>
+    
+    <div id="canvasContainer">
+        <canvas id="drawingCanvas" width="800" height="600"></canvas>
+    </div>
+
+    <script src="figuras2D.js"></script>
+</body>
+</html>
