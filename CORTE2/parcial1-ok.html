@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Polígonos Regulares</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #canvas {
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generador de Polígonos Regulares</h1>
+    <div>
+        <form id="polygonForm">
+            <label for="nLados">Número de lados (n):</label>
+            <input type="number" id="nLados" name="nLados" min="3" required><br>
+
+            <label for="seleccion">¿Qué valor desea ingresar?</label>
+            <select id="seleccion" name="seleccion" onchange="toggleInputBySelection()">
+                <option value="" disabled selected>Seleccione una opción</option>
+                <option value="apotema">Apotema</option>
+                <option value="lado">Lado</option>
+            </select><br>
+
+            <label for="apotema">Apotema (a):</label>
+            <input type="number" id="apotema" name="apotema" step="any" disabled oninput="calcularValorFaltante()" required><br>
+
+            <label for="lado">Lado (L):</label>
+            <input type="number" id="lado" name="lado" step="any" disabled oninput="calcularValorFaltante()" required><br>
+
+            <label for="valorCalculado">Valor Calculado:</label>
+            <input type="text" id="valorCalculado" name="valorCalculado" readonly><br>
+
+            <label for="tipoCoordenadas">Tipo de Coordenadas:</label>
+            <select id="tipoCoordenadas" name="tipoCoordenadas" onchange="toggleCoordenadas()">
+                <option value="" disabled selected>Seleccione una opción</option>
+                <option value="cartesianas">Cartesianas</option>
+                <option value="polares">Polares</option>
+            </select><br>
+
+            <div id="coordenadasCartesianas" style="display:none;">
+                <label for="coordX">Coordenada X del centro:</label>
+                <input type="number" id="coordX" name="coordX"><br>
+
+                <label for="coordY">Coordenada Y del centro:</label>
+                <input type="number" id="coordY" name="coordY"><br>
+            </div>
+
+            <div id="coordenadasPolares" style="display:none;">
+                <label for="radioPolar">Radio Polar (r):</label>
+                <input type="number" id="radioPolar" name="radioPolar" step="any"><br>
+
+                <label for="anguloPolar">Ángulo Polar (θ):</label>
+                <input type="number" id="anguloPolar" name="anguloPolar" step="any"><br>
+            </div>
+
+            <button type="button" onclick="dibujarPoligono()">Dibujar Polígono</button>
+        </form>
+
+        <canvas id="canvas" width="500" height="500"></canvas>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
