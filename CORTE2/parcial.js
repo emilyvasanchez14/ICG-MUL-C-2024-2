@@ -137,6 +137,15 @@ class Poligono {
     }
 }
 
+function mostrarOpciones() {
+    const nLados = document.getElementById('nLados').value;
+    if (nLados >= 3) {
+        document.getElementById('opciones').style.display = 'block';
+    } else {
+        document.getElementById('opciones').style.display = 'none';
+    }
+}
+
 function toggleInputBySelection() {
     const seleccion = document.getElementById('seleccion').value;
     document.getElementById('apotema').disabled = seleccion !== 'apotema';

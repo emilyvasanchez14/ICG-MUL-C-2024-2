@@ -71,10 +71,10 @@
     <div>
         <form id="polygonForm">
             <label for="nLados">Número de lados (n):</label>
-            <input type="number" id="nLados" name="nLados" min="3" required><br>
+            <input type="number" id="nLados" name="nLados" min="3" required onchange="mostrarOpciones()"><br>
 
             <label for="seleccion">¿Qué valor desea ingresar?</label>
-            <select id="seleccion" name="seleccion" onchange="toggleInputBySelection()">
+            <select id="seleccion" name="seleccion" onchange="toggleInputBySelection()" required>
                 <option value="" disabled selected>Seleccione una opción</option>
                 <option value="apotema">Apotema</option>
                 <option value="lado">Lado</option>
@@ -90,7 +90,7 @@
             <input type="text" id="valorCalculado" name="valorCalculado" readonly><br>
 
             <label for="tipoCoordenadas">Tipo de Coordenadas:</label>
-            <select id="tipoCoordenadas" name="tipoCoordenadas" onchange="toggleCoordenadas()">
+            <select id="tipoCoordenadas" name="tipoCoordenadas" onchange="toggleCoordenadas()" required>
                 <option value="" disabled selected>Seleccione una opción</option>
                 <option value="cartesianas">Cartesianas</option>
                 <option value="polares">Polares</option>
@@ -121,3 +121,4 @@
     <script src="parcial.js"></script>
 </body>
 </html>
+
