@@ -123,22 +123,11 @@ class Poligono {
         }
         ctx.closePath();
         ctx.stroke();
-
-        // Dibujar líneas desde los vértices al centro
-        ctx.beginPath();
-        for (let i = 0; i < this.#nLados; i++) {
-            const angulo = (2 * Math.PI / this.#nLados) * i;
-            const x = this.#xCentro + radio * Math.cos(angulo);
-            const y = this.#yCentro + radio * Math.sin(angulo);
-            ctx.moveTo(this.#xCentro, this.#yCentro);
-            ctx.lineTo(x, y);
-        }
-        ctx.stroke();
     }
 }
 
 function mostrarOpciones() {
-    const nLados = document.getElementById('nLados').value;
+    const nLados = parseInt(document.getElementById('nLados').value, 10);
     if (nLados >= 3) {
         document.getElementById('opciones').style.display = 'block';
     } else {
@@ -156,7 +145,7 @@ function toggleInputBySelection() {
 }
 
 function calcularValorFaltante() {
-    const nLados = parseInt(document.getElementById('nLados').value);
+    const nLados = parseInt(document.getElementById('nLados').value, 10);
     const seleccion = document.getElementById('seleccion').value;
 
     if (seleccion === 'apotema') {
@@ -183,7 +172,7 @@ function toggleCoordenadas() {
 }
 
 function actualizarPoligono() {
-    const nLados = parseInt(document.getElementById('nLados').value);
+    const nLados = parseInt(document.getElementById('nLados').value, 10);
     const seleccion = document.getElementById('seleccion').value;
     let poligono = new Poligono(nLados);
 
@@ -198,3 +187,16 @@ function actualizarPoligono() {
     const canvas = document.getElementById('canvas');
     poligono.dibujarPoligono(canvas);
 }
+
+function borrarDatos() {
+    document.getElementById('polygonForm').reset();
+    document.getElementById('opciones').style.display = 'none';
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+function salir() {
+    window.close(); // Cierra la ventana actual
+}
+
